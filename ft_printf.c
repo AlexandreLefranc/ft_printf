@@ -6,27 +6,11 @@
 /*   By: alefranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 14:54:21 by alefranc          #+#    #+#             */
-/*   Updated: 2021/12/02 17:25:14 by alefranc         ###   ########.fr       */
+/*   Updated: 2021/12/03 12:08:32 by alefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libprintf.h"
-
-void	ft_putchar_fd(char c)
-{
-	write(1, &c, 1);
-}
-
-int		isinset(char c, const char *set)
-{
-	while (*set != '\0')
-	{
-		if (c == *set)
-			return (1);
-		set++;
-	}
-	return (0);
-}
 
 size_t	count_variatic(const char *str)
 {

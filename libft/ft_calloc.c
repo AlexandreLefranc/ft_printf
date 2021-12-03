@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alefranc <alefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 20:21:15 by alefranc          #+#    #+#             */
-/*   Updated: 2021/12/03 15:28:46 by alefranc         ###   ########.fr       */
+/*   Created: 2021/11/22 17:22:41 by alefranc          #+#    #+#             */
+/*   Updated: 2021/11/24 12:37:20 by alefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
+#include "libft.h"
 
-int	test_printf(const char *str, ...)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	va_list	args;
-	va_start(args, str);
-	printf("%s\n", va_arg(args, char *));
-	printf("%d\n", va_arg(args, int));
-	printf("%d\n", va_arg(args, int));
-	va_end(args);
-	return (0);
-}
+	void	*ptr;
 
-int	main()
-{
-	int	res = test_printf("Yo %s, t'as %d ans et %% %d billes\n", "Bob", 5, 13);
-
-	printf("%d\n", res);
+	if (nmemb * size > 2147483647)
+		return (NULL);
+	ptr = (void *)malloc(nmemb * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, nmemb * size);
+	return (ptr);
 }

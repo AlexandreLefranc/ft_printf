@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alefranc <alefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 20:21:15 by alefranc          #+#    #+#             */
-/*   Updated: 2021/12/03 15:28:46 by alefranc         ###   ########.fr       */
+/*   Created: 2021/11/02 21:18:02 by alefranc          #+#    #+#             */
+/*   Updated: 2021/11/23 16:51:22 by alefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
+#include "libft.h"
 
-int	test_printf(const char *str, ...)
+char	*ft_strdup(const char *s)
 {
-	va_list	args;
-	va_start(args, str);
-	printf("%s\n", va_arg(args, char *));
-	printf("%d\n", va_arg(args, int));
-	printf("%d\n", va_arg(args, int));
-	va_end(args);
-	return (0);
-}
+	char	*dup;
+	size_t	i;
 
-int	main()
-{
-	int	res = test_printf("Yo %s, t'as %d ans et %% %d billes\n", "Bob", 5, 13);
-
-	printf("%d\n", res);
+	dup = (char *)ft_calloc(ft_strlen(s) + 1, sizeof(*dup));
+	if (dup == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }

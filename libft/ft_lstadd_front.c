@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libprintf.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alefranc <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alefranc <alefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 14:50:26 by alefranc          #+#    #+#             */
-/*   Updated: 2021/12/03 17:25:38 by alefranc         ###   ########.fr       */
+/*   Created: 2021/11/28 11:51:25 by alefranc          #+#    #+#             */
+/*   Updated: 2021/11/29 14:58:13 by alefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPRINTF
-# define LIBPRINTF
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
-
-# define SET "cspdiuxX%"
-
-int	ft_printf(const char *str, ...);
-
-#endif
+void	ft_lstadd_front(t_list **alst, t_list *new)
+{
+	if (new == NULL)
+		return ;
+	if (alst == NULL || *alst == NULL)
+	{
+		*alst = new;
+		return ;
+	}
+	new->next = *alst;
+	*alst = new;
+}

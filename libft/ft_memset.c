@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libprintf.h                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alefranc <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alefranc <alefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 14:50:26 by alefranc          #+#    #+#             */
-/*   Updated: 2021/12/03 17:25:38 by alefranc         ###   ########.fr       */
+/*   Created: 2021/11/02 21:16:38 by alefranc          #+#    #+#             */
+/*   Updated: 2021/11/02 21:16:39 by alefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPRINTF
-# define LIBPRINTF
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+// Can be rewriten shorter with casting
 
-# define SET "cspdiuxX%"
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t	i;
+	char	*s2;
 
-int	ft_printf(const char *str, ...);
-
-#endif
+	s2 = (char *)s;
+	i = 0;
+	while (i < n)
+	{
+		s2[i] = c;
+		i++;
+	}
+	return (s);
+}

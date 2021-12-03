@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alefranc <alefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 20:21:15 by alefranc          #+#    #+#             */
-/*   Updated: 2021/12/03 15:28:46 by alefranc         ###   ########.fr       */
+/*   Created: 2021/11/02 21:13:41 by alefranc          #+#    #+#             */
+/*   Updated: 2021/11/02 21:13:52 by alefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
+#include "libft.h"
 
-int	test_printf(const char *str, ...)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	va_list	args;
-	va_start(args, str);
-	printf("%s\n", va_arg(args, char *));
-	printf("%d\n", va_arg(args, int));
-	printf("%d\n", va_arg(args, int));
-	va_end(args);
+	size_t	i;
+
+	i = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
+	{
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
 	return (0);
-}
-
-int	main()
-{
-	int	res = test_printf("Yo %s, t'as %d ans et %% %d billes\n", "Bob", 5, 13);
-
-	printf("%d\n", res);
 }

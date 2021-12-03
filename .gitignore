@@ -1,3 +1,6 @@
+# Perso
+.DS_Store
+
 # Prerequisites
 *.d
 
@@ -50,3 +53,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Others
+*.swp
+*.swo
+.DS_Store
+libftTester/
+libft-war-machine/

@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alefranc <alefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 20:21:15 by alefranc          #+#    #+#             */
-/*   Updated: 2021/12/03 15:28:46 by alefranc         ###   ########.fr       */
+/*   Created: 2021/11/02 21:16:32 by alefranc          #+#    #+#             */
+/*   Updated: 2021/11/24 11:27:44 by alefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
+#include "libft.h"
 
-int	test_printf(const char *str, ...)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	va_list	args;
-	va_start(args, str);
-	printf("%s\n", va_arg(args, char *));
-	printf("%d\n", va_arg(args, int));
-	printf("%d\n", va_arg(args, int));
-	va_end(args);
-	return (0);
-}
+	size_t	i;
 
-int	main()
-{
-	int	res = test_printf("Yo %s, t'as %d ans et %% %d billes\n", "Bob", 5, 13);
-
-	printf("%d\n", res);
+	if (src == dest)
+		return (dest);
+	if (src < dest)
+	{
+		while (n > 0)
+		{
+			((char *)dest)[n - 1] = ((char *)src)[n - 1];
+			n--;
+		}
+	}
+	else
+	{
+		i = 0;
+		while (i < n)
+		{
+			((char *)dest)[i] = ((char *)src)[i];
+			i++;
+		}
+	}
+	return (dest);
 }

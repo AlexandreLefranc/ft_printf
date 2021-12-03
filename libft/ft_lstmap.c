@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alefranc <alefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 20:21:15 by alefranc          #+#    #+#             */
-/*   Updated: 2021/12/03 15:28:46 by alefranc         ###   ########.fr       */
+/*   Created: 2021/11/28 11:59:07 by alefranc          #+#    #+#             */
+/*   Updated: 2021/11/28 12:00:15 by alefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
+#include "libft.h"
 
-int	test_printf(const char *str, ...)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	va_list	args;
-	va_start(args, str);
-	printf("%s\n", va_arg(args, char *));
-	printf("%d\n", va_arg(args, int));
-	printf("%d\n", va_arg(args, int));
-	va_end(args);
-	return (0);
-}
+	t_list	*newlst;
+	t_list	*newelem;
 
-int	main()
-{
-	int	res = test_printf("Yo %s, t'as %d ans et %% %d billes\n", "Bob", 5, 13);
-
-	printf("%d\n", res);
+	newlst = NULL;
+	while (lst != NULL)
+	{
+		newelem = ft_lstnew(f(lst->content));
+		if (newelem == NULL)
+		{
+			ft_lstclear(&newlst, del);
+			break ;
+		}
+		ft_lstadd_back(&newlst, newelem);
+		lst = lst->next;
+	}
+	return (newlst);
 }

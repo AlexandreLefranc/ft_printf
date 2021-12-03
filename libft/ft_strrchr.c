@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libprintf.h                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alefranc <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alefranc <alefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 14:50:26 by alefranc          #+#    #+#             */
-/*   Updated: 2021/12/03 17:25:38 by alefranc         ###   ########.fr       */
+/*   Created: 2021/11/02 21:12:53 by alefranc          #+#    #+#             */
+/*   Updated: 2021/11/02 21:12:55 by alefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPRINTF
-# define LIBPRINTF
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+char	*ft_strrchr(const char *s, int c)
+{
+	ssize_t	i;
+	char	*ptr;
+	char	c2;
 
-# define SET "cspdiuxX%"
-
-int	ft_printf(const char *str, ...);
-
-#endif
+	c2 = (char)c;
+	ptr = (char *)s;
+	i = ft_strlen(s);
+	while (i > -1)
+	{
+		if (ptr[i] == c2)
+			return (&ptr[i]);
+		i--;
+	}
+	return (NULL);
+}

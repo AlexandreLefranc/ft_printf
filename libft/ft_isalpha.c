@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alefranc <alefranc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 20:21:15 by alefranc          #+#    #+#             */
-/*   Updated: 2021/12/03 15:28:46 by alefranc         ###   ########.fr       */
+/*   Created: 2021/11/02 21:11:33 by alefranc          #+#    #+#             */
+/*   Updated: 2021/11/02 21:11:35 by alefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
+#include "libft.h"
 
-int	test_printf(const char *str, ...)
+static int	ft_islower(int c)
 {
-	va_list	args;
-	va_start(args, str);
-	printf("%s\n", va_arg(args, char *));
-	printf("%d\n", va_arg(args, int));
-	printf("%d\n", va_arg(args, int));
-	va_end(args);
+	if (c >= 'a' && c <= 'z')
+		return (1);
 	return (0);
 }
 
-int	main()
+static int	ft_isupper(int c)
 {
-	int	res = test_printf("Yo %s, t'as %d ans et %% %d billes\n", "Bob", 5, 13);
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
+}
 
-	printf("%d\n", res);
+int	ft_isalpha(int c)
+{
+	if (ft_islower(c) || ft_isupper(c))
+		return (1);
+	return (0);
 }
