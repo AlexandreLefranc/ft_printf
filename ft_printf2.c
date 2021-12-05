@@ -6,7 +6,7 @@
 /*   By: alefranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:19:30 by alefranc          #+#    #+#             */
-/*   Updated: 2021/12/05 02:27:09 by alefranc         ###   ########.fr       */
+/*   Updated: 2021/12/05 02:42:57 by alefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,30 +154,38 @@ int main()
 		char s[] = "yo";
 		int res = ft_printf("Yo %s, t'as %dans%% %d bie%c ptr=%p\n", "Bob", 5, 13, 's', s);
 		int res2 =   printf("Yo %s, t'as %dans%% %d bie%c ptr=%p\n", "Bob", 5, 13, 's', s);
-		printf("%d : %d\n", res, res2);
+		printf("%d : %d\n\n", res, res2);
 		fflush(stdout);
 	}
 	{
 		char s[] = "yo";
-		printf("%p | %s\n", s, ft_itoa_llu_base((unsigned long long)s, "0123456789abcdef"));
+		printf("%p | %s\n\n", s, ft_itoa_llu_base((unsigned long long)s, "0123456789abcdef"));
 		fflush(stdout);
 	}
 	{
-		int res = ft_printf("\n");
-		int res2 =   printf("\n");
-		printf("%d : %d\n", res, res2);
+		int res = ft_printf("%");
+		(void)res;
+//		int res2 =   printf("%");
+//		printf("%d : %d\n\n", res, res2);
 		fflush(stdout);
 	}
 	{
 		int res = ft_printf("");
 		int res2 =   printf("");
-		printf("%d : %d\n", res, res2);
+		printf("%d : %d\n\n", res, res2);
 		fflush(stdout);
 	}
 	{
 		int res = ft_printf("%d, %i, %s, %c, %p, %%\n", 42, 42, "42", 42, NULL);
 		int res2 =   printf("%d, %i, %s, %c, %p, %%\n", 42, 42, "42", 42, NULL);
-		printf("%d : %d\n", res, res2);
+		printf("%d : %d\n\n", res, res2);
 		fflush(stdout);
 	}
+	{
+		int res = ft_printf("%x, %X\n", 42, 42);
+		int res2 =   printf("%x, %X\n", 42, 42);
+		printf("%d : %d\n\n", res, res2);
+		fflush(stdout);
+	}
+
 }
