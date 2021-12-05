@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alefranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:19:30 by alefranc          #+#    #+#             */
-/*   Updated: 2021/12/03 17:25:10 by alefranc         ###   ########.fr       */
+/*   Updated: 2021/12/05 02:27:09 by alefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char	*ft_itoa_llu_base(unsigned long long n, char *base)
 
 	n2 = n;
 	blocks = 0;
+	if (n2 == 0)
+		blocks++;
 	while (n2 != 0)
 	{
 		blocks++;
@@ -58,6 +60,8 @@ char	*ft_itoa_llu_base(unsigned long long n, char *base)
 	if (out == NULL)
 		return (NULL);
 	out[blocks] = '\0';
+	if (n == 0)
+		out[blocks - 1] = base[n % ft_strlen(base)];
 	while (n > 0)
 	{
 		out[blocks - 1] = base[n % ft_strlen(base)];
@@ -89,20 +93,22 @@ int	ft_putarg_size(const char *ptr, va_list args)
 	r = 0;
 	if (*ptr == '%')
 		r += ft_putstr_size("%");
-	if (*ptr == 's')
+	else if (*ptr == 's')
 		r += ft_putstr_size(va_arg(args, char *));
-	if (*ptr == 'd' || *ptr == 'i')
+	else if (*ptr == 'd' || *ptr == 'i')
 		r += ft_putnbr_size(va_arg(args, int));
-	if (*ptr == 'c')
+	else if (*ptr == 'c')
 		r += ft_putchar_size(va_arg(args, int));
-	if (*ptr == 'p')
+	else if (*ptr == 'p')
 		r += ft_putptr_size(va_arg(args, void *));
-	if (*ptr == 'u')
+	else if (*ptr == 'u')
 		;
-	if (*ptr == 'x')
+	else if (*ptr == 'x')
 		;
-	if (*ptr == 'X')
+	else if (*ptr == 'X')
 		;
+	else 
+		r += ft_putchar_size(*ptr);
 	return (r);
 }
 
@@ -144,12 +150,34 @@ int	ft_printf(const char *format, ...)
 
 int main()
 {
-	char s[] = "yo";
-    int res = ft_printf("Yo %s, t'as %dans%% %d bie%c ptr=%p\n", "Bob", 5, 13, 's', s);
-	int res2 =   printf("Yo %s, t'as %dans%% %d bie%c ptr=%p\n", "Bob", 5, 13, 's', s);
-
-    printf("%d : %d\n", res, res2);
-
-	printf("%p | %s\n", s, ft_itoa_llu_base((unsigned long long)s, "0123456789abcdef"));
-
+	{
+		char s[] = "yo";
+		int res = ft_printf("Yo %s, t'as %dans%% %d bie%c ptr=%p\n", "Bob", 5, 13, 's', s);
+		int res2 =   printf("Yo %s, t'as %dans%% %d bie%c ptr=%p\n", "Bob", 5, 13, 's', s);
+		printf("%d : %d\n", res, res2);
+		fflush(stdout);
+	}
+	{
+		char s[] = "yo";
+		printf("%p | %s\n", s, ft_itoa_llu_base((unsigned long long)s, "0123456789abcdef"));
+		fflush(stdout);
+	}
+	{
+		int res = ft_printf("\n");
+		int res2 =   printf("\n");
+		printf("%d : %d\n", res, res2);
+		fflush(stdout);
+	}
+	{
+		int res = ft_printf("");
+		int res2 =   printf("");
+		printf("%d : %d\n", res, res2);
+		fflush(stdout);
+	}
+	{
+		int res = ft_printf("%d, %i, %s, %c, %p, %%\n", 42, 42, "42", 42, NULL);
+		int res2 =   printf("%d, %i, %s, %c, %p, %%\n", 42, 42, "42", 42, NULL);
+		printf("%d : %d\n", res, res2);
+		fflush(stdout);
+	}
 }
