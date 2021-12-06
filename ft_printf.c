@@ -6,7 +6,7 @@
 /*   By: alefranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:19:30 by alefranc          #+#    #+#             */
-/*   Updated: 2021/12/06 00:07:40 by alefranc         ###   ########.fr       */
+/*   Updated: 2021/12/06 02:45:52 by alefranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,6 +258,39 @@ int main()
 		int	res2 =    printf("%%");
 		printf("\n%d : %d\n\n", res1, res2);
 		fflush(stdout);
+	}
+	{
+		printf("\n==================\n%%x\n==================\n");
+		int	res1 = ft_printf("%d", 0);
+		printf(" : ");
+		int	res2 =    printf("%x", 0);
+		printf("\n%d : %d\n\n", res1, res2);
+		fflush(stdout);
+
+		res1 = ft_printf("%d", 42);
+		printf(" : ");
+		res2 =    printf("%x", 42);
+		printf("\n%d : %d\n\n", res1, res2);
+		fflush(stdout);
+
+		res1 = ft_printf("%d", -42);
+		printf(" : ");
+		res2 =    printf("%x", -42);
+		printf("\n%d : %d\n\n", res1, res2);
+		fflush(stdout);
+
+		res1 = ft_printf("%d", 2147483647);
+		printf(" : ");
+		res2 =    printf("%x", 2147483647);
+		printf("\n%d : %d\n\n", res1, res2);
+		fflush(stdout);
+		
+		res1 = ft_printf("%d", -2147483648);
+		printf(" : ");
+		res2 =    printf("%x", (unsigned int)-2147483648);
+		printf("\n%d : %d\n\n", res1, res2);
+		fflush(stdout);
+
 	}
 
 }

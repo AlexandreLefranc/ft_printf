@@ -1,0 +1,23 @@
+https://github.com/alelievr/printf-unit-test
+https://github.com/Tripouille/printfTester
+https://github.com/paulo-santana/ft_printf_tester
+
+# ft_printf.c
+	ft_printf(format, ...)
+	_ft_printf(format, args)
+
+# ft_putarg.c
+	ft_putarg_size(char, va_arg)
+	
+# ft_putstr.c
+	ft_putstr_size(str)
+	ft_putchar_size(char)
+
+# ft_putptr_and_puthexa.c
+	ft_is_valid_base(base)
+	ft_get_size_llu_base_size(llu, base)
+	ft_putnbr_llu_base_size(llu, base)
+
+# ft_putnbr.c
+	ft_get_size(int)
+	ft_putnbr(int)
