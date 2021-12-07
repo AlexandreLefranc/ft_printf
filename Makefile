@@ -15,7 +15,11 @@ FLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
 LIBFTDIR = libft/
 LIBFT = libft.a
-SRC = ft_printf.c
+SRC =   ft_printf.c \
+		ft_putarg_size.c \
+		ft_putnbr_size.c \
+		ft_putstr_size.c \
+		ft_putptr_puthexa_putunsigned_size.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

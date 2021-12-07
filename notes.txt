@@ -8,7 +8,7 @@ https://github.com/paulo-santana/ft_printf_tester
 
 # ft_putarg.c
 	ft_putarg_size(char, va_arg)
-	
+
 # ft_putstr.c
 	ft_putstr_size(str)
 	ft_putchar_size(char)
@@ -21,3 +21,6 @@ https://github.com/paulo-santana/ft_printf_tester
 # ft_putnbr.c
 	ft_get_size(int)
 	ft_putnbr(int)
+
+# main.c
+	
