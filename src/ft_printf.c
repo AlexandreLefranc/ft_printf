@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-// clangc ft_printf.c -Llibft/ -lft && ./a.out
-int	_ft_printf(const char *format, va_list args)
+static int	_ft_printf(const char *format, va_list args)
 {
 	int		r;
 	char	*start;

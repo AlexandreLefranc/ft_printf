@@ -1,5 +1,8 @@
 # Perso
 .DS_Store
+printfTester/
+ft_printf_tester/
+printf-unit-test/
 
 # Prerequisites
 *.d

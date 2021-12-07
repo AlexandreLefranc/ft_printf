@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	ft_getllu_size_base(unsigned long long llu, char *base)
 {
@@ -49,8 +49,8 @@ int	ft_putptr_size(void *ptr)
 
 int	ft_putunsigned_size(unsigned int n)
 {
-	int			r;
-	unsigned	n2;
+	int				r;
+	unsigned int	n2;
 
 	n2 = n;
 	r = 0;
@@ -61,8 +61,8 @@ int	ft_putunsigned_size(unsigned int n)
 
 int	ft_puthexa_size(int n, char *base)
 {
-	int			r;
-	unsigned	n2;
+	int				r;
+	unsigned int	n2;
 
 	n2 = n;
 	r = 0;

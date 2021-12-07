@@ -1,19 +1,9 @@
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include <stdio.h>
 
-// make re && clangc main.c -L libft -lft -L. -lftprintf && ./a.out
+// make && clangc main/main.c libftprintf.a -Iincludes && ./a.out
 int main()
 {
-	{
-		int size = ft_putnbr_size(42);
-		printf("\n%d\n", size);
-		size = ft_putnbr_size(2147483647);
-		printf("\n%d\n", size);
-		size = ft_putnbr_size(-2147483648);
-		printf("\n%d\n", size);
-		size = ft_putnbr_size(0);
-		printf("\n%d\n", size);
-	}
 // 	{
 // 		char s[] = "yo";
 // 		int res = ft_printf("Yo %s, t'as %dans%% %d bie%c ptr=%p\n", "Bob", 5, 13, 's', s);
@@ -53,17 +43,35 @@ int main()
 // 	}
 	{
 		printf("\n==================\n%%c\n==================\n");
-		int	res1 = ft_printf("%c", 't');
+		int	res1 = ft_printf("Any letter %c", 't');
 		printf(" : ");
-		int	res2 =    printf("%c", 't');
+		int	res2 =    printf("Any letter %c", 't');
+		printf("\n%d : %d\n\n", res1, res2);
+		fflush(stdout);
+
+		res1 = ft_printf("\\0 char %c", '\0');
+		printf(" : ");
+		res2 =    printf("\\0 char %c", '\0');
 		printf("\n%d : %d\n\n", res1, res2);
 		fflush(stdout);
 	}
 	{
 		printf("\n==================\n%%s\n==================\n");
-		int	res1 = ft_printf("%s", "Hello");
+		int	res1 = ft_printf("Any %s", "Hello");
 		printf(" : ");
-		int	res2 =    printf("%s", "Hello");
+		int	res2 =    printf("Any %s", "Hello");
+		printf("\n%d : %d\n\n", res1, res2);
+		fflush(stdout);
+
+		res1 = ft_printf("Empty %s", "");
+		printf(" : ");
+		res2 =    printf("Empty %s", "");
+		printf("\n%d : %d\n\n", res1, res2);
+		fflush(stdout);
+
+		res1 = ft_printf("NULL %s", NULL);
+		printf(" : ");
+		res2 =    printf("NULL %s", NULL);
 		printf("\n%d : %d\n\n", res1, res2);
 		fflush(stdout);
 	}
@@ -156,9 +164,27 @@ int main()
 	}
 	{
 		printf("\n==================\n%%u\n==================\n");
-		int	res1 = ft_printf("%u", 5);
+		int	res1 = ft_printf("%u", 0);
 		printf(" : ");
-		int	res2 =    printf("%u", 5);
+		int	res2 =    printf("%u", 0);
+		printf("\n%d : %d\n\n", res1, res2);
+		fflush(stdout);
+
+		res1 = ft_printf("%u", 2147483647);
+		printf(" : ");
+		res2 =    printf("%u", 2147483647);
+		printf("\n%d : %d\n\n", res1, res2);
+		fflush(stdout);
+
+		res1 = ft_printf("%u", 2147483650);
+		printf(" : ");
+		res2 =    printf("%u", (unsigned)2147483650);
+		printf("\n%d : %d\n\n", res1, res2);
+		fflush(stdout);
+
+		res1 = ft_printf("%u", -1);
+		printf(" : ");
+		res2 =    printf("%u", -1);
 		printf("\n%d : %d\n\n", res1, res2);
 		fflush(stdout);
 	}
